@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Coursera Quick Nav",
+  "version": "10.0.0",
+  "description": "Auto-complete videos, marathon mode, speed control — by Rahul Chowdhury",
+  "author": "Rahul Chowdhury — https://github.com/Rahul-2314",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["https://www.coursera.org/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.coursera.org/*"],
+      "js": ["injector.js"],
+      "run_at": "document_start",
+      "world": "ISOLATED"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["main.js"],
+      "matches": ["https://www.coursera.org/*"]
+    }
+  ],
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

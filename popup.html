@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Coursera Quick Nav</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #080a0e;
+  --s1:       #0f1117;
+  --s2:       #161922;
+  --s3:       #1d2130;
+  --b1:       #1e2235;
+  --b2:       #28304a;
+  --text:     #dde3f0;
+  --muted:    #4a5270;
+  --blue:     #4f8ef7;
+  --blue-d:   #162040;
+  --green:    #34d27f;
+  --green-d:  #081f14;
+  --green-m:  #133825;
+  --amber:    #f5a623;
+  --amber-d:  #1e1100;
+}
+
+body {
+  width: 340px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.hdr {
+  background: var(--s1);
+  border-bottom: 1px solid var(--b1);
+  padding: 13px 15px 11px;
+  display: flex; align-items: center; gap: 11px;
+}
+.hdr-logo {
+  width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, #4f8ef7 0%, #7c5cfc 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; box-shadow: 0 4px 14px rgba(79,142,247,.35);
+}
+.hdr-info { flex: 1; min-width: 0; }
+.hdr-title { font-size: 14px; font-weight: 700; letter-spacing: -.3px; }
+.hdr-sub   { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.hdr-badge {
+  font-size: 9px; font-weight: 600; letter-spacing: .5px;
+  background: var(--blue-d); color: var(--blue); border: 1px solid #203060;
+  border-radius: 5px; padding: 2px 6px; font-family: 'JetBrains Mono', monospace;
+}
+
+/* MARATHON CARD */
+.m-card {
+  margin: 10px 10px 0;
+  background: var(--green-d); border: 1px solid var(--green-m);
+  border-radius: 14px; padding: 13px 14px 11px;
+  position: relative; overflow: hidden;
+}
+.m-card::after {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(52,210,127,.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.m-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 9px; }
+.m-brand { display: flex; align-items: center; gap: 9px; }
+.m-brand .ico { font-size: 20px; }
+.m-brand strong { font-size: 13px; font-weight: 700; color: var(--green); display: block; }
+.m-brand span   { font-size: 10px; color: #215a3a; margin-top: 1px; display: block; }
+
+.m-pill {
+  font-size: 9px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 20px; font-family: 'JetBrains Mono', monospace;
+  background: var(--green-m); color: #2a6a46; border: 1px solid #1d4a30;
+}
+.m-pill.on   { background: #0c2e1c; color: var(--green); border-color: #2a5a3a; animation: blink 2s infinite; }
+.m-pill.skp  { background: var(--amber-d); color: var(--amber); border-color: #5a3a00; animation: blink 1.5s infinite; }
+.m-pill.done { background: #0a1a30; color: #60a5fa; border-color: #1e3a6a; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.5} }
+
+.m-track { height: 2px; background: var(--green-m); border-radius: 2px; margin-bottom: 7px; overflow: hidden; }
+.m-bar   { height: 100%; background: var(--green); border-radius: 2px; width: 0; transition: width .7s ease; }
+
+.m-cur {
+  font-size: 10px; min-height: 14px; margin-bottom: 8px; color: #215a3a;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-family: 'JetBrains Mono', monospace;
+}
+.m-cur.live { color: var(--green); }
+.m-cur.done { color: #60a5fa; }
+
+.m-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+.m-stat {
+  background: #061710; border: 1px solid var(--green-m);
+  border-radius: 9px; padding: 7px 0 6px; text-align: center;
+}
+.m-stat .n { font-size: 19px; font-weight: 700; color: var(--green); font-family: 'JetBrains Mono', monospace; line-height: 1; }
+.m-stat .l { font-size: 9px; color: #2a5a3a; text-transform: uppercase; letter-spacing: .4px; margin-top: 2px; }
+
+.btn-run {
+  width: 100%; padding: 11px;
+  background: linear-gradient(135deg, #166534 0%, #14803a 100%);
+  border: none; border-radius: 10px; color: #fff;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: opacity .15s, transform .1s;
+  box-shadow: 0 3px 16px rgba(20,128,58,.3);
+  font-family: 'Inter', sans-serif;
+}
+.btn-run:hover  { opacity: .88; transform: translateY(-1px); }
+.btn-run.stop   { background: linear-gradient(135deg, #7f1d1d, #991b1b); box-shadow: 0 3px 16px rgba(127,29,29,.3); }
+
+/* Course complete strip */
+.done-strip {
+  display: none; margin: 8px 10px 0;
+  background: linear-gradient(135deg, #052e16, #064e3b);
+  border: 1px solid #059669; border-radius: 10px;
+  padding: 10px 13px; align-items: center; gap: 10px;
+}
+.done-strip.show { display: flex; }
+.done-strip .d-ico { font-size: 22px; flex-shrink: 0; }
+.done-strip .d-text strong { font-size: 12px; color: #34d399; font-weight: 700; display: block; }
+.done-strip .d-text small  { font-size: 10px; color: #6ee7b7; }
+
+.div  { height: 1px; background: var(--b1); margin: 10px 10px 0; }
+.lbl  { padding: 8px 15px 3px; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+
+/* CAPTURE BADGE */
+.cap-badge {
+  margin: 6px 10px 0;
+  display: flex; align-items: center; gap: 7px;
+  background: var(--green-d); border: 1px solid var(--green-m);
+  border-radius: 8px; padding: 7px 11px; font-size: 11px; color: var(--green);
+}
+.cap-badge.off { background: #1f0808; border-color: #3a0e0e; color: #f87171; }
+.pulse { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; animation: blink 2s infinite; }
+
+/* MANUAL CONTROLS */
+.controls { padding: 8px 10px 0; display: flex; flex-direction: column; gap: 7px; }
+
+.btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.btn-sm {
+  border-radius: 9px; font-size: 12px; font-weight: 600; cursor: pointer;
+  padding: 10px 8px; border: 1px solid;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  transition: background .15s; font-family: 'Inter', sans-serif; white-space: nowrap;
+}
+.btn-next { background: var(--s2); border-color: var(--b2); color: #7ec8ff; }
+.btn-next:hover { background: var(--s3); }
+.btn-skip { background: var(--amber-d); border-color: #604000; color: var(--amber); }
+.btn-skip:hover { background: #2a1a00; }
+
+/* SPEED */
+.speed {
+  margin: 10px 10px 0;
+  background: var(--s1); border: 1px solid var(--b1); border-radius: 10px; padding: 10px 13px;
+}
+.speed-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.speed-row span { font-size: 12px; font-weight: 500; }
+.speed-val { font-size: 14px; font-weight: 700; color: var(--blue); font-family: 'JetBrains Mono', monospace; }
+input[type=range] { width: 100%; accent-color: var(--blue); cursor: pointer; }
+.speed-marks { display: flex; justify-content: space-between; font-size: 9px; color: var(--muted); margin-top: 3px; font-family: 'JetBrains Mono', monospace; }
+
+/* TOGGLES */
+.toggles { padding: 5px 10px 0; display: flex; flex-direction: column; gap: 5px; }
+.tog {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--s1); border: 1px solid var(--b1); border-radius: 9px; padding: 9px 12px;
+  transition: border-color .2s;
+}
+.tog:hover { border-color: var(--blue); }
+.tog-text span { font-size: 12px; font-weight: 500; }
+.tog-text small { font-size: 10px; color: var(--muted); display: block; margin-top: 1px; }
+
+.sw { position: relative; width: 38px; height: 21px; flex-shrink: 0; }
+.sw input { opacity: 0; width: 0; height: 0; }
+.sw-t { position: absolute; inset: 0; background: #252938; border-radius: 21px; cursor: pointer; transition: background .2s; }
+.sw-t::before { content: ''; position: absolute; width: 15px; height: 15px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: transform .2s; }
+.sw input:checked + .sw-t { background: var(--blue); }
+.sw input:checked + .sw-t::before { transform: translateX(17px); }
+
+/* SUPPORT SECTION */
+.support { margin: 10px 10px 0; display: flex; flex-direction: column; gap: 7px; }
+
+.btn-github {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--s1); border: 1px solid var(--b2);
+  border-radius: 11px; padding: 11px 14px;
+  text-decoration: none; color: var(--text);
+  transition: border-color .2s, background .2s;
+  cursor: pointer;
+}
+.btn-github:hover { border-color: #6e8ef5; background: #0d1020; }
+.btn-github .gh-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: #1c1f26; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+}
+.btn-github .gh-text { flex: 1; }
+.btn-github .gh-text strong { font-size: 12px; font-weight: 700; display: block; letter-spacing: -.1px; }
+.btn-github .gh-text small  { font-size: 10px; color: var(--muted); margin-top: 1px; display: block; }
+.gh-star {
+  display: flex; align-items: center; gap: 4px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #1a0f00; font-size: 10px; font-weight: 700;
+  border-radius: 6px; padding: 3px 8px; flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.btn-coffee {
+  display: flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #1a1200, #2a1e00);
+  border: 1px solid #7a5a00;
+  border-radius: 11px; padding: 11px 14px;
+  text-decoration: none; color: var(--text);
+  transition: border-color .2s, opacity .15s;
+  cursor: pointer;
+}
+.btn-coffee:hover { border-color: #f59e0b; opacity: .9; }
+.btn-coffee .cf-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: rgba(245,166,35,.12); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.btn-coffee .cf-text { flex: 1; }
+.btn-coffee .cf-text strong { font-size: 12px; font-weight: 700; color: var(--amber); display: block; }
+.btn-coffee .cf-text small  { font-size: 10px; color: #a07020; margin-top: 1px; display: block; }
+.cf-arrow { font-size: 14px; color: var(--amber); opacity: .7; }
+
+/* FOOTER */
+footer {
+  padding: 9px 14px 11px; border-top: 1px solid var(--b1);
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 10px;
+}
+.f-status { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.f-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
+.f-credit { font-size: 10px; color: var(--muted); }
+.f-credit a { color: var(--blue); text-decoration: none; }
+.f-credit a:hover { text-decoration: underline; }
+
+#toast {
+  display: none; position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+  background: var(--green); color: #fff; font-size: 12px; font-weight: 700;
+  padding: 6px 16px; border-radius: 20px; white-space: nowrap; z-index: 999;
+  font-family: 'Inter', sans-serif;
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-logo">⚡</div>
+  <div class="hdr-info">
+    <div class="hdr-title">Coursera Quick Nav</div>
+    <div class="hdr-sub">Auto-complete · Marathon · Speed control</div>
+  </div>
+  <div class="hdr-badge">v10</div>
+</div>
+
+<div class="m-card">
+  <div class="m-top">
+    <div class="m-brand">
+      <span class="ico">🏃</span>
+      <div>
+        <strong>Video Marathon</strong>
+        <span>Plays lectures only · skips everything else</span>
+      </div>
+    </div>
+    <div class="m-pill" id="mPill">IDLE</div>
+  </div>
+  <div class="m-track"><div class="m-bar" id="mBar"></div></div>
+  <div class="m-cur" id="mCur">Not running</div>
+  <div class="m-stats">
+    <div class="m-stat"><div class="n" id="mVid">0</div><div class="l">Videos</div></div>
+    <div class="m-stat"><div class="n" id="mSkip">0</div><div class="l">Skipped</div></div>
+    <div class="m-stat"><div class="n" id="mApi">0</div><div class="l">API hits</div></div>
+  </div>
+  <button class="btn-run" id="btnMarathon">▶&nbsp; Start Video Marathon</button>
+</div>
+
+<div class="done-strip" id="doneStrip">
+  <span class="d-ico">🎓</span>
+  <div class="d-text">
+    <strong>Course Complete!</strong>
+    <small>All videos watched — marathon stopped</small>
+  </div>
+</div>
+
+<div class="div"></div>
+<div class="lbl">Manual Controls</div>
+
+<div class="cap-badge off" id="capBadge">
+  <span class="pulse"></span>
+  <span id="capText">Play a video to capture API calls</span>
+</div>
+
+<div class="controls">
+  <div class="btn-row">
+    <button class="btn-sm btn-next" id="btnNext">▶ Next Lesson</button>
+    <button class="btn-sm btn-skip" id="btnSkipEnd">⏩ +30s Skip</button>
+  </div>
+</div>
+
+<div class="speed">
+  <div class="speed-row">
+    <span>Playback speed</span>
+    <span class="speed-val" id="speedLbl">2×</span>
+  </div>
+  <input type="range" id="speedRange" min="0.5" max="4" step="0.25" value="2"/>
+  <div class="speed-marks"><span>0.5×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span></div>
+</div>
+
+<div class="lbl" style="margin-top:6px">Settings</div>
+<div class="toggles">
+  <div class="tog">
+    <div class="tog-text"><span>Auto-advance</span><small>Next lesson when video ends</small></div>
+    <label class="sw"><input type="checkbox" id="autoAdvance"/><span class="sw-t"></span></label>
+  </div>
+  <div class="tog">
+    <div class="tog-text"><span>Unlock seeking</span><small>Skip freely in any video</small></div>
+    <label class="sw"><input type="checkbox" id="unlockSeeking"/><span class="sw-t"></span></label>
+  </div>
+  <div class="tog">
+    <div class="tog-text"><span>Auto-play</span><small>Resume if Coursera pauses video</small></div>
+    <label class="sw"><input type="checkbox" id="autoPlay"/><span class="sw-t"></span></label>
+  </div>
+  <div class="tog">
+    <div class="tog-text"><span>Skip countdowns</span><small>Auto-dismiss "Next in 5s" overlays</small></div>
+    <label class="sw"><input type="checkbox" id="skipWaiting"/><span class="sw-t"></span></label>
+  </div>
+</div>
+
+<div class="lbl" style="margin-top:6px">Support the project</div>
+<div class="support">
+  <a class="btn-github" href="https://github.com/Rahul-2314/coursera-marathon" target="_blank">
+    <div class="gh-icon">⭐</div>
+    <div class="gh-text">
+      <strong>Star on GitHub</strong>
+      <small>coursera-marathon · Rahul-2314</small>
+    </div>
+    <div class="gh-star">⭐ Star</div>
+  </a>
+  <a class="btn-coffee" href="https://buymeacoffee.com/chowdhuryre" target="_blank">
+    <div class="cf-icon">☕</div>
+    <div class="cf-text">
+      <strong>Buy me a coffee</strong>
+      <small>Support keeps this free & updated</small>
+    </div>
+    <span class="cf-arrow">→</span>
+  </a>
+</div>
+
+<footer>
+  <div class="f-status"><span class="f-dot"></span>coursera.org</div>
+  <div class="f-credit">by <a href="https://github.com/Rahul-2314" target="_blank">Rahul Chowdhury</a></div>
+</footer>
+
+<div id="toast"></div>
+<script src="popup.js"></script>
+</body>
+</html>
