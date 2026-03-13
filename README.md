@@ -207,7 +207,7 @@ For big changes, open an issue first to discuss.
 
 If this extension saved you hours of watching videos, a star goes a long way:
 
-[![Star on GitHub]([https://img.shields.io/github/stars/Rahul-2314/coursera-marathon-extension?style=for-the-badge&logo=github&color=yellow](https://img.shields.io/github/stars/Rahul-2314/coursera-marathon-extension?style=flat-square&color=yellow)](https://github.com/Rahul-2314/coursera-marathon-extension)
+[![Star on GitHub](https://img.shields.io/github/stars/Rahul-2314/coursera-marathon-extension?style=for-the-badge&logo=github&color=yellow)](https://github.com/Rahul-2314/coursera-marathon-extension/stargazers)
 
 ---
 
