@@ -10,7 +10,7 @@ Auto-completes lectures, skips non-video items, and marks your progress — all 
 [![Version](https://img.shields.io/badge/version-10.0.0-blue?style=flat-square&logo=googlechrome&logoColor=white)](https://github.com/Rahul-2314/coursera-marathon-extension/releases)
 [![Manifest](https://img.shields.io/badge/Manifest-V3-green?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/)
 [![License](https://img.shields.io/badge/license-MIT-orange?style=flat-square)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/Rahul-2314/coursera-marathon?style=flat-square&color=yellow)](https://github.com/Rahul-2314/coursera-marathon-extension/stargazers)
+[![Stars](https://img.shields.io/github/stars/Rahul-2314/coursera-marathon-extension?style=flat-square&color=yellow)](https://github.com/Rahul-2314/coursera-marathon-extension/stargazers)
 
 [⚡ Install](#-installation) · [🏃 Features](#-features) · [🗺️ Roadmap](#%EF%B8%8F-roadmap) · [🙋 Support](#-support) · [☕ Donate](#-buy-me-a-coffee)
 
