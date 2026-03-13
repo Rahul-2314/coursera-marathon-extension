@@ -16,10 +16,11 @@
   --b1:       #1e2235;
   --b2:       #28304a;
   --text:     #dde3f0;
-  --muted:    #4a5270;
+  --muted:    #717ba1;
   --blue:     #4f8ef7;
   --blue-d:   #162040;
   --green:    #34d27f;
+  --green-r:    #1e9756;
   --green-d:  #081f14;
   --green-m:  #133825;
   --amber:    #f5a623;
@@ -42,11 +43,23 @@ body {
   display: flex; align-items: center; gap: 11px;
 }
 .hdr-logo {
-  width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
-  background: linear-gradient(135deg, #4f8ef7 0%, #7c5cfc 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 17px; box-shadow: 0 4px 14px rgba(79,142,247,.35);
+  width: 30px; 
+  height: 30px; 
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  box-shadow: 0 7px 21px rgba(79,142,247,.35);
+  overflow: hidden;
 }
+.hdr-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
 .hdr-info { flex: 1; min-width: 0; }
 .hdr-title { font-size: 14px; font-weight: 700; letter-spacing: -.3px; }
 .hdr-sub   { font-size: 10px; color: var(--muted); margin-top: 2px; }
@@ -73,7 +86,7 @@ body {
 .m-brand { display: flex; align-items: center; gap: 9px; }
 .m-brand .ico { font-size: 20px; }
 .m-brand strong { font-size: 13px; font-weight: 700; color: var(--green); display: block; }
-.m-brand span   { font-size: 10px; color: #215a3a; margin-top: 1px; display: block; }
+.m-brand span   { font-size: 10px; color: var(--green-r); margin-top: 1px; display: block; }
 
 .m-pill {
   font-size: 9px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase;
@@ -89,7 +102,7 @@ body {
 .m-bar   { height: 100%; background: var(--green); border-radius: 2px; width: 0; transition: width .7s ease; }
 
 .m-cur {
-  font-size: 10px; min-height: 14px; margin-bottom: 8px; color: #215a3a;
+  font-size: 10px; min-height: 14px; margin-bottom: 8px; color: var(--green-r);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   font-family: 'JetBrains Mono', monospace;
 }
@@ -102,7 +115,7 @@ body {
   border-radius: 9px; padding: 7px 0 6px; text-align: center;
 }
 .m-stat .n { font-size: 19px; font-weight: 700; color: var(--green); font-family: 'JetBrains Mono', monospace; line-height: 1; }
-.m-stat .l { font-size: 9px; color: #2a5a3a; text-transform: uppercase; letter-spacing: .4px; margin-top: 2px; }
+.m-stat .l { font-size: 9px; color: var(--green-r); text-transform: uppercase; letter-spacing: .4px; margin-top: 2px; }
 
 .btn-run {
   width: 100%; padding: 11px;
@@ -209,8 +222,9 @@ input[type=range] { width: 100%; accent-color: var(--blue); cursor: pointer; }
 .btn-github .gh-text small  { font-size: 10px; color: var(--muted); margin-top: 1px; display: block; }
 .gh-star {
   display: flex; align-items: center; gap: 4px;
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  color: #1a0f00; font-size: 10px; font-weight: 700;
+  /* background: linear-gradient(135deg, #fbbf24, #f59e0b); */
+  border: 2px solid rgb(208, 120, 19);
+  color: #d0c1ad; font-size: 10px; font-weight: 700;
   border-radius: 6px; padding: 3px 8px; flex-shrink: 0;
   font-family: 'JetBrains Mono', monospace;
 }
@@ -234,7 +248,7 @@ input[type=range] { width: 100%; accent-color: var(--blue); cursor: pointer; }
 .btn-coffee .cf-text { flex: 1; }
 .btn-coffee .cf-text strong { font-size: 12px; font-weight: 700; color: var(--amber); display: block; }
 .btn-coffee .cf-text small  { font-size: 10px; color: #a07020; margin-top: 1px; display: block; }
-.cf-arrow { font-size: 14px; color: var(--amber); opacity: .7; }
+.cf-arrow { font-size: 21px; color: var(--amber); opacity: .7; }
 
 /* FOOTER */
 footer {
@@ -245,7 +259,7 @@ footer {
 .f-status { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
 .f-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
 .f-credit { font-size: 10px; color: var(--muted); }
-.f-credit a { color: var(--blue); text-decoration: none; }
+.f-credit a { color: var(--green); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-weight: 550; }
 .f-credit a:hover { text-decoration: underline; }
 
 #toast {
@@ -254,14 +268,40 @@ footer {
   padding: 6px 16px; border-radius: 20px; white-space: nowrap; z-index: 999;
   font-family: 'Inter', sans-serif;
 }
+
+/*  CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 142, 247, 0.2);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 142, 247, 0.55);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(79, 142, 247, 0.2) transparent;
+}
+
 </style>
 </head>
 <body>
 
 <div class="hdr">
-  <div class="hdr-logo">⚡</div>
+  <div class="hdr-logo"><img src="./icons/icon48.png" alt=""></div>
   <div class="hdr-info">
-    <div class="hdr-title">Coursera Quick Nav</div>
+    <div class="hdr-title">Coursera Marathon</div>
     <div class="hdr-sub">Auto-complete · Marathon · Speed control</div>
   </div>
   <div class="hdr-badge">v10</div>
@@ -316,7 +356,7 @@ footer {
     <span>Playback speed</span>
     <span class="speed-val" id="speedLbl">2×</span>
   </div>
-  <input type="range" id="speedRange" min="0.5" max="4" step="0.25" value="2"/>
+  <input type="range" id="speedRange" min="0" max="4" step="0.25" value="2"/>
   <div class="speed-marks"><span>0.5×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span></div>
 </div>
 
@@ -356,12 +396,12 @@ footer {
       <strong>Buy me a coffee</strong>
       <small>Support keeps this free & updated</small>
     </div>
-    <span class="cf-arrow">→</span>
+    <span class="cf-arrow">⟶</span>
   </a>
 </div>
 
 <footer>
-  <div class="f-status"><span class="f-dot"></span>coursera.org</div>
+  <div class="f-status"><span class="f-dot"></span>live on coursera.org</div>
   <div class="f-credit">by <a href="https://github.com/Rahul-2314" target="_blank">Rahul Chowdhury</a></div>
 </footer>
 
