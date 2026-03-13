@@ -7,10 +7,10 @@
 **Blaze through Coursera courses at warp speed.**  
 Auto-completes lectures, skips non-video items, and marks your progress — all hands-free.
 
-[![Version](https://img.shields.io/badge/version-10.0.0-blue?style=flat-square&logo=googlechrome&logoColor=white)](https://github.com/Rahul-2314/coursera-marathon/releases)
+[![Version](https://img.shields.io/badge/version-10.0.0-blue?style=flat-square&logo=googlechrome&logoColor=white)](https://github.com/Rahul-2314/coursera-marathon-extension/releases)
 [![Manifest](https://img.shields.io/badge/Manifest-V3-green?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/)
 [![License](https://img.shields.io/badge/license-MIT-orange?style=flat-square)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/Rahul-2314/coursera-marathon?style=flat-square&color=yellow)](https://github.com/Rahul-2314/coursera-marathon/stargazers)
+[![Stars](https://img.shields.io/github/stars/Rahul-2314/coursera-marathon?style=flat-square&color=yellow)](https://github.com/Rahul-2314/coursera-marathon-extension/stargazers)
 
 [⚡ Install](#-installation) · [🏃 Features](#-features) · [🗺️ Roadmap](#%EF%B8%8F-roadmap) · [🙋 Support](#-support) · [☕ Donate](#-buy-me-a-coffee)
 
@@ -34,7 +34,7 @@ Start the marathon, close the laptop lid, come back to a completed course.
 
 **Option A — Clone with Git**
 ```bash
-git clone https://github.com/Rahul-2314/coursera-marathon.git
+git clone https://github.com/Rahul-2314/coursera-marathon-extension.git
 ```
 
 **Option B — Download ZIP**
@@ -186,7 +186,7 @@ The extension runs entirely in the **page's MAIN world** — no background servi
 | Speed not changing | Some Coursera players resist overrides — try toggling Auto-play off and on |
 | Extension not visible | Make sure it's pinned (puzzle icon → pin it) |
 
-**Still stuck?** [Open an issue →](https://github.com/Rahul-2314/coursera-marathon/issues)
+**Still stuck?** [Open an issue →](https://github.com/Rahul-2314/coursera-marathon-extension/issues)
 
 ---
 
@@ -207,7 +207,7 @@ For big changes, open an issue first to discuss.
 
 If this extension saved you hours of watching videos, a star goes a long way:
 
-[![Star on GitHub](https://img.shields.io/github/stars/Rahul-2314/coursera-marathon?style=for-the-badge&logo=github&color=yellow)](https://github.com/Rahul-2314/coursera-marathon)
+[![Star on GitHub](https://img.shields.io/github/stars/Rahul-2314/coursera-marathon?style=for-the-badge&logo=github&color=yellow)](https://github.com/Rahul-2314/coursera-marathon-extension)
 
 ---
 
